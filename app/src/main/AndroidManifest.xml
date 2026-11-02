@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Permisos (RNF04):
+         - INTERNET / ACCESS_NETWORK_STATE: cuenta y respaldo en Supabase, mapa (OpenStreetMap) y puntos de reciclaje.
+         - CAMERA: foto opcional de lo que se deposita; se pide solo al tocar "Tomar foto".
+         - ACCESS_COARSE/FINE_LOCATION: ordenar puntos por cercanía; se piden solo al tocar "Cerca de mí".
+           La ubicación no se guarda ni se envía a ningún servidor. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <!-- Notificaciones (Android 13+): se pide solo al activar los recordatorios. Sin ella la app funciona igual. -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- La cámara es opcional: la app se instala y funciona también en equipos sin cámara. -->
+    <uses-feature android:name="android.hardware.camera.any" android:required="false" />
+
+    <application
+        android:name=".ReciCausaApp"
+        android:allowBackup="false"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ReciCausa">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
